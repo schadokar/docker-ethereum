@@ -1,0 +1,16 @@
+version: "3"
+services:
+  ganache:
+    build:
+      context: .
+      dockerfile: Dockerfile.ganache
+    ports:
+      - "8545:8545"
+  dapp:
+    build: .
+    ports: 
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - TRUFFLE_HD_WALLET_KEY="Enter your wallet seed words"
+      - INFURA_API="Enter your Infura API Key"

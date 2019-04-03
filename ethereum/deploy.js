@@ -49,5 +49,5 @@ console.log(result);
     }
 }
 
-deploy("hello world");
+// deploy("hello world");
 module.exports = deploy;

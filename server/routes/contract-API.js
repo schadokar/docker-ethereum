@@ -9,7 +9,7 @@ router.post("/compile", async function(req, res, next) {
 });
 
 router.post("/deploy", async function(req, res, next) {
-    const result = await deploy();
+    const result = await deploy("Hello World!");
     res.send(JSON.parse(result));
 });
 

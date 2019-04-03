@@ -28,6 +28,6 @@ const compile = () => {
     }
 };
 
-console.log(compile());
+// console.log(compile());
 
 module.exports = compile;
