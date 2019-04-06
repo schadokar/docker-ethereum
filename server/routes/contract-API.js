@@ -3,14 +3,16 @@ const router = express.Router();
 const compile = require("../../ethereum/compile");
 const deploy = require("../../ethereum/deploy");
 
+// Compile the contract
 router.post("/compile", async function(req, res, next) {
     const result = compile();
-    res.render("index", {message: result}) 
+    res.send(result); 
 });
 
+// Deploy the contract
 router.post("/deploy", async function(req, res, next) {
     const result = await deploy("Hello World!");
-    res.render("index", {message: JSON.parse(result).address}) 
+    res.send(JSON.parse(result).address); 
 });
 
 module.exports = router;

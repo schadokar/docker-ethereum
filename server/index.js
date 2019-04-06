@@ -5,7 +5,7 @@ const app = express();
 const contractAPIRoutes = require("./routes/contract-API");
 const smartContractAPIRoutes = require("./routes/smart-contract-API");
 
-const port = process.env.PORT || 4000;
+const port = 4000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,11 +17,6 @@ app.use(
     })
 );
 
-// use static file
-app.use(express.static('public'));
-
-// set the template engine
-app.set('view engine', 'ejs');
 
 // use the routes specified in route folder
 app.use("/", contractAPIRoutes);

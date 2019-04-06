@@ -1,5 +1,5 @@
 const fs = require("fs-extra");
-const {web3, web3Network} = require("./web3");
+const {web3} = require("./web3");
 const compileContract = require("./build/Message.json");
 
 // Contract object deployed on network (ganache-cli or testnet or mainnet)
@@ -7,12 +7,7 @@ const compileContract = require("./build/Message.json");
 
 const getContractObject = () => {
     let contractReceipt;
-    if(web3Network == "ganache") {
-        contractReceipt = require("./receipt-ganache.json");
-    }
-    else if (web3Network == "rinkeby") {
-        contractReceipt = require("./receipt-rinkeby.json");
-    }
+    contractReceipt = require("./receipt-ganache.json");
 
     const contractObject = new web3.eth.Contract(
         JSON.parse(compileContract.interface),

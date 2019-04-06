@@ -5,9 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/index.js",
-    "ganache": "set NODE_ENV=GANACHE&& node ./server/index.js",
-    "ganacheDeploy": "set NODE_ENV=GANACHE&& node ./ethereum/deploy"
+    "start": "nodemon ./server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,10 +14,8 @@
     "circular-json": "^0.5.9",
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
-    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "fs-extra": "^7.0.1",
-    "jsonfile": "^5.0.0",
     "nodemon": "^1.18.9",
     "solc": "0.4.25",
     "truffle-hdwallet-provider": "1.0.2",
