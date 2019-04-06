@@ -10,6 +10,9 @@ services:
     build: .
     ports: 
       - "4000:4000"
+    volumes:
+      - /app/node_modules
+      - .:/app
     environment:
       - PORT=4000
       - TRUFFLE_HD_WALLET_KEY="Enter your wallet seed words"

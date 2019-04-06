@@ -24,7 +24,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // use the routes specified in route folder
-app.use("/contract", contractAPIRoutes);
+app.use("/", contractAPIRoutes);
 app.use("/",smartContractAPIRoutes);
 
 

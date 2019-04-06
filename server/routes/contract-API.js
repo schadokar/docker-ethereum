@@ -5,12 +5,12 @@ const deploy = require("../../ethereum/deploy");
 
 router.post("/compile", async function(req, res, next) {
     const result = compile();
-    res.send(result); 
+    res.render("index", {message: result}) 
 });
 
 router.post("/deploy", async function(req, res, next) {
     const result = await deploy("Hello World!");
-    res.send(JSON.parse(result));
+    res.render("index", {message: JSON.parse(result).address}) 
 });
 
 module.exports = router;

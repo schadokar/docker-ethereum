@@ -29,14 +29,12 @@ const deploy = async (mymessage) => {
         fs.ensureFileSync(receiptPath);
         console.log("receipt file created");
     }
-console.log(compiledContract.bytecode);
     const result = await new web3.eth.Contract(
         JSON.parse(compiledContract.interface)
     )
     .deploy({data: compiledContract.bytecode, arguments: [mymessage]})
     .send({gas: 3000000, from: accounts[0]});
-console.log(result);
-    console.log(`Contract deployed to , ${result.options.address}`);
+    console.log(`Contract deployed to ${result.options.address}`);
 
     const serialised = circularJSON.stringify(result.options);
     fs.writeJsonSync(receiptPath,result.options);
