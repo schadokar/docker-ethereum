@@ -13,16 +13,6 @@ const deploy = async (mymessage) => {
         const accounts = await web3.eth.getAccounts();
         console.log(`Attempting to deploy from account , ${accounts[0]}`);
 
-        if(fs.existsSync(receiptPath)){
-            fs.removeSync(receiptPath);
-            console.log("receipt file deleted");    
-            fs.ensureFileSync(receiptPath);
-            console.log("receipt file created");
-        }
-        else {
-            fs.ensureFileSync(receiptPath);
-            console.log("receipt file created");
-        }
         const result = await new web3.eth.Contract(
             JSON.parse(compiledContract.interface)
         )
