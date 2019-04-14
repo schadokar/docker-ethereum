@@ -1,25 +1,20 @@
+// web3.js
 const fs = require("fs");
 const Web3 = require("web3");
 
+const web3Network = "ganache"
 
-let web3;
-let web3Network;
+// creating a web3 instance on ganache-cli network
+// Here the url is http://ganache:8545
+// this ganache is the name of the container in which ganache-cli is running
+const web3 = new Web3(new Web3.providers.HttpProvider("http://ganache:8545"))
 
-  
-  // local ganache-cli setup
-  const eventProvider = new Web3.providers.WebsocketProvider(
-    "ws://ganache:8545"
-  );
+// local ganache-cli setup
+const eventProvider = new Web3.providers.WebsocketProvider(
+  "ws://ganache:8545"
+);
 
-  if (typeof web3 !== "undefined") {
-    web3 = new Web3(web3.currentProvider);
-  } else {
-    // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider("http://ganache:8545"));
-  }
-
-  web3Network = "ganache";
-  web3.setProvider(eventProvider);
+web3.setProvider(eventProvider);
 
 module.exports = {
   web3,

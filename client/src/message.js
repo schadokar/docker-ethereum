@@ -18,18 +18,33 @@ class Message extends Component {
         this.onsubmitdeploy = this.onsubmitdeploy.bind(this);
     }
 
+    // on change of input, set the value to the message state
     onChange(event) {
         this.setState({message: event.target.value });
     };
 
-    onsubmitgetmsg = () => {
-        axios.get(endpoint + "/").then(res => {
+    // on click on Compile button send the POST request to the localhost:4000/compile
+    // to compile the contract 
+    onsubmitcompile = () => {
+        axios.post(endpoint + "/compile").then(res => {
             this.setState({
-                output: res.data
+                output : res.data
             });
-        });
+        })
     };
 
+    // on click on Deploy button send the POST request to the localhost:4000/deploy
+    // to deploy the contract
+    onsubmitdeploy = () => {
+        axios.post(endpoint + "/deploy").then(res => {
+            this.setState({
+                output : res.data
+            });
+        })
+    };
+
+    // on click of Set Message button send the POST request to the localhost:4000/ 
+    // with the message to set in the smart contract 
     onsubmitsetmsg = () => {
         axios.post(endpoint + "/", {
             message: this.state.message 
@@ -40,20 +55,14 @@ class Message extends Component {
         })
     };
 
-    onsubmitcompile = () => {
-        axios.post(endpoint + "/compile").then(res => {
+    // on click of Get Message button send the GET request to the localhost:4000/
+    // to fetch the message from the smart contract 
+    onsubmitgetmsg = () => {
+        axios.get(endpoint + "/").then(res => {
             this.setState({
-                output : res.data
+                output: res.data
             });
-        })
-    };
-
-    onsubmitdeploy = () => {
-        axios.post(endpoint + "/deploy").then(res => {
-            this.setState({
-                output : res.data
-            });
-        })
+        });
     };
 
     render() {
