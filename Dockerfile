@@ -1,12 +1,14 @@
 # using node alpine as base image
-FROM node:alpine
+FROM node:8.12-alpine
 
 # working dir ./app
 WORKDIR /app
 
 # Install the prerequisites to install the web3 and other ethereum npm packages
-RUN apk update && apk upgrade && apk add --no-cache bash git openssh
-RUN apk add --update python krb5 krb5-libs gcc make g++ krb5-dev
+RUN apk update && apk upgrade && apk add bash git openssh
+RUN apk add --update python2 krb5 krb5-libs gcc make g++ krb5-dev
+
+RUN git config --global url."https://".insteadOf git://
 
 # Copy the package.json
 COPY ./package.json .

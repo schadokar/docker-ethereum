@@ -1,19 +1,22 @@
 version: "3"
 services:
   ganache:
+    image: schadokar/eth-ganache:1.0.0
     build:
       context: .
       dockerfile: Dockerfile.ganache
     ports:
       - "8545:8545"
   dapp:
+    image: schadokar/eth-server:1.0.0
     build: .
-    ports: 
+    ports:
       - "4000:4000"
     depends_on:
       - ganache
-    
+
   react:
+    image: schadokar/eth-react:1.0.0
     build: ./client
     ports:
       - "3000:3000"
