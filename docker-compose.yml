@@ -19,6 +19,6 @@ services:
     image: schadokar/eth-react:1.0.0
     build: ./client
     ports:
-      - "3000:3000"
+      - "3000:80"
     depends_on:
       - dapp

@@ -1,5 +1,5 @@
 # using node alpine as base image
-FROM node:alpine
+FROM node:12-alpine as build
 
 # working dir ./app
 WORKDIR /app
@@ -8,10 +8,19 @@ WORKDIR /app
 COPY ./package.json .
 
 # install dependencies
-RUN npm install
+RUN npm install --silent
 
 # COPY client directory folder
 COPY . .
 
 # default command
-CMD ["npm","start"]
+RUN npm run build
+
+### STAGE 2: Production Environment ###
+FROM nginx:1.21.6-alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
